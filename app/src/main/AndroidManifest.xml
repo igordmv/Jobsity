@@ -3,16 +3,18 @@
     package="com.exercise.jobsity">
 
     <application
+        android:name=".BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".BaseApplication"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.Jobsity" >
-        <activity android:name=".presentation.activity.MainActivity"
-            android:configChanges="orientation|screenSize">
+        android:theme="@style/Theme.Jobsity"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".presentation.activity.MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
