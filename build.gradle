@@ -15,6 +15,7 @@ buildscript {
         retrofit_version = "2.9.0"
         hilt_view_model_version = "1.0.0-alpha03"
         coroutines_version = "1.5.1"
+        lottie_version = "4.1.0"
     }
     repositories {
         google()
