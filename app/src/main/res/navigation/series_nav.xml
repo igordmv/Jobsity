@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/seriesFragment"
-        android:name="com.exercise.jobsity.presentation.fragment.series.SeriesFragment"
+        android:name="com.exercise.jobsity.presentation.fragment.home.HomeFragment"
         android:label="SeriesFragment" />
 </navigation>
