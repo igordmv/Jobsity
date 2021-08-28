@@ -16,6 +16,7 @@ buildscript {
         hilt_view_model_version = "1.0.0-alpha03"
         coroutines_version = "1.5.1"
         lottie_version = "4.1.0"
+        glide_version = '4.10.0'
     }
     repositories {
         google()

@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-parcelize'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
 }
@@ -11,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId "com.exercise.jobsity"
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -67,6 +68,10 @@ dependencies {
 
     //Airbnb Lottie
     implementation "com.airbnb.android:lottie:$lottie_version"
+
+    //Glide
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
 
     //Tests dependencies
     testImplementation "junit:junit:$junit_version"

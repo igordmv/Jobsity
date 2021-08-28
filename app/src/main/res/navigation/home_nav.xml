@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.exercise.jobsity.presentation.fragment.home.HomeFragment"
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_showFragment"
+            app:destination="@id/showFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/showFragment"
+        android:name="com.exercise.jobsity.presentation.fragment.show.ShowFragment"
+        android:label="ShowFragment">
+        <argument
+            android:name="selectedShow"
+            app:argType="com.exercise.jobsity.domain.model.Show" />
+    </fragment>
+
+</navigation>

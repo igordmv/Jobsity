@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8dp"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_banner"
+                android:layout_width="wrap_content"
+                android:layout_height="350dp"
+                android:layout_marginStart="@dimen/dimen_8dp"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_back"
+                tools:src="@drawable/dinasty_placeholder" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_show_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gilroy_extrabold"
+                android:textSize="@dimen/show_name_title_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_banner"
+                tools:text="Dynasty" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_show_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_32dp"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:layout_marginEnd="@dimen/dimen_32dp"
+                android:fontFamily="@font/gilroy_light"
+                android:textSize="@dimen/show_description_text_size"
+                android:gravity="center"
+                tools:text="Filmed at the historic Warner Theater in Washington, DC, the program will honor recipients of the 29th annual Hispanic Heritage Awards. Honorees include celebrities, physicians, scientists, educators, innovators, public officials and community and business leaders selected by the Hispanic Heritage Foundation. The awards, established by the White House in 1987 to commemorate the creation of Hispanic Heritage Month in the U.S., are considered among the highest honors for Latinos by Latinos and recognize notable Latinos who have had a positive impact on America and the world in various fields. The evening includes live performances and appearances by some of the country's most celebrated Hispanic artists. This year's Hispanic Heritage Awards will be hosted by cast members from Orange is the New Black."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_show_name" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
