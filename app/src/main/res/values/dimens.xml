@@ -3,7 +3,7 @@
     <dimen name="show_constraint_layout_content_height">30dp</dimen>
     <dimen name="item_show_margin_end">2dp</dimen>
     <dimen name="show_name_text_size">10sp</dimen>
-    <dimen name="show_name_title_text_size">30sp</dimen>
+    <dimen name="show_name_title_text_size">20sp</dimen>
     <dimen name="show_description_text_size">15sp</dimen>
     <dimen name="show_episode_text_size">6sp</dimen>
     <dimen name="show_see_all_text_size">16sp</dimen>

@@ -4,4 +4,11 @@
     <string name="search">Search</string>
     <string name="profile">Profile</string>
     <string name="shows_see_all">More shows »</string>
+    <string name="network">Network:</string>
+    <string name="show_info">Show Info</string>
+    <string name="schedule">Schedule:</string>
+    <string name="status">Status:</string>
+    <string name="show_type">Show Type:</string>
+    <string name="genres">Genres:</string>
+    <string name="official_site">Official Site:</string>
 </resources>
