@@ -17,4 +17,4 @@ data class Show (
     val type : String?,
     val officialSite : String?,
     val averageRuntime : Int?
-) : Serializable, Parcelable
+) :Serializable, Parcelable

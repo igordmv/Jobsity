@@ -1,6 +1,5 @@
 package com.exercise.jobsity.presentation.fragment.show
 
-import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.exercise.jobsity.R
 import com.exercise.jobsity.databinding.FragmentShowBinding
 import com.exercise.jobsity.domain.model.Episode
 import com.exercise.jobsity.domain.model.Season
 import com.exercise.jobsity.domain.model.Show
 import com.exercise.jobsity.presentation.adapter.EpisodeAdapter
-import com.exercise.jobsity.presentation.adapter.ShowAdapter
+import com.exercise.jobsity.presentation.fragment.episode.EpisodeFragment.Companion.SELECTED_EPISODE
 import com.exercise.jobsity.presentation.fragment.home.HomeFragment.Companion.SELECTED_SHOW
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -58,7 +58,9 @@ class ShowFragment : Fragment() {
     }
 
     private fun clickedEpisode(episode : Episode) {
-
+        val bundle = Bundle()
+        bundle.putParcelable(SELECTED_EPISODE, episode)
+        findNavController().navigate(R.id.action_showFragment_to_episodeFragment, bundle)
     }
 
     private fun setupObservers() {
@@ -72,7 +74,7 @@ class ShowFragment : Fragment() {
                 val adapter: ArrayAdapter<String> =
                     ArrayAdapter(
                         requireContext(),
-                        R.layout.simple_spinner_dropdown_item,
+                        android.R.layout.simple_spinner_dropdown_item,
                         seasonList
                     )
                 binding.spinnerSeasons.adapter = adapter

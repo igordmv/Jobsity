@@ -47,7 +47,6 @@ class HomeFragment : Fragment() {
 
     private fun setupListeners() {
         binding.btShowSeeAll.setOnClickListener {
-
         }
     }
 

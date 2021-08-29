@@ -20,6 +20,19 @@
         <argument
             android:name="selectedShow"
             app:argType="com.exercise.jobsity.domain.model.Show" />
+        <action
+            android:id="@+id/action_showFragment_to_episodeFragment"
+            app:destination="@id/episodeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/episodeFragment"
+        android:name="com.exercise.jobsity.presentation.fragment.episode.EpisodeFragment"
+        android:label="EpisodeFragment">
+        <argument
+            android:name="selectedEpisode"
+            app:argType="com.exercise.jobsity.domain.model.Episode"/>
+
     </fragment>
 
 </navigation>
