@@ -11,6 +11,9 @@
         <action
             android:id="@+id/action_homeFragment_to_showFragment"
             app:destination="@id/showFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_moreShowsFragment"
+            app:destination="@id/moreShowsFragment" />
     </fragment>
 
     <fragment
@@ -32,7 +35,16 @@
         <argument
             android:name="selectedEpisode"
             app:argType="com.exercise.jobsity.domain.model.Episode"/>
+    </fragment>
 
+    <fragment
+        android:id="@+id/moreShowsFragment"
+        android:name="com.exercise.jobsity.presentation.fragment.moreshows.MoreShowsFragment"
+        android:label="MoreShowsFragment">
+
+        <action
+            android:id="@+id/action_moreShowsFragment_to_showFragment"
+            app:destination="@id/showFragment" />
     </fragment>
 
 </navigation>

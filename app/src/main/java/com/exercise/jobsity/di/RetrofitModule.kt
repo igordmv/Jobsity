@@ -9,6 +9,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.CacheControl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -36,6 +37,7 @@ class RetrofitModule() {
                     .method(original.method, original.body)
 
             val request = requestBuilder.build()
+
             response = chain.proceed(request)
 
             return@addInterceptor response

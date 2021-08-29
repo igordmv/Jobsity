@@ -20,7 +20,7 @@ data class ShowResponse(
     val weight : Int,
     val network : NetworkResponse?,
     val externals : ExternalsResponse,
-    val image : ImageResponse,
+    val image : ImageResponse?,
     val summary : String,
     val updated : Int,
     @SerializedName("_links") val links : LinksResponse

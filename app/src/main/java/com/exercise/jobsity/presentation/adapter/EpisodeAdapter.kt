@@ -45,7 +45,6 @@ class EpisodeViewHolder internal constructor(
     fun bind(episode: Episode) {
         binding.tvEpisodeName.text = episode.name
         binding.tvEpisodeNumber.text = "${episode.number}"
-        binding.tvEpisodeAirDate.text = episode.airDate
         binding.root.setOnClickListener { onEpisodeClicked.invoke(episode) }
     }
 }

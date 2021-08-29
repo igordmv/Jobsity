@@ -47,6 +47,7 @@ class HomeFragment : Fragment() {
 
     private fun setupListeners() {
         binding.btShowSeeAll.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_moreShowsFragment)
         }
     }
 

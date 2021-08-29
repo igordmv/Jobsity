@@ -44,8 +44,8 @@ class ShowViewModel @Inject constructor(
     }
 
     fun getDescription(): Spanned? {
-        show?.let {
-            return Html.fromHtml(it.summary, Html.FROM_HTML_MODE_COMPACT)
+        show?.summary?.let {
+            return Html.fromHtml(it, Html.FROM_HTML_MODE_COMPACT)
         } ?: run { return null }
     }
 

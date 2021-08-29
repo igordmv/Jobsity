@@ -24,23 +24,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_8dp"
-            android:layout_marginStart="@dimen/dimen_8dp"
+            android:layout_marginStart="@dimen/dimen_32dp"
             android:fontFamily="@font/gilroy_light"
             android:textColor="@color/black"
             tools:text="Fine Temporum"
             app:layout_constraintStart_toEndOf="@id/tv_episode_number"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_episode_air_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_8dp"
-            android:layout_marginStart="@dimen/dimen_32dp"
-            android:fontFamily="@font/gilroy_light"
-            android:textColor="@color/black"
-            tools:text="2013-06-24"
-            app:layout_constraintStart_toEndOf="@id/tv_episode_name"
             app:layout_constraintTop_toTopOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

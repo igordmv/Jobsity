@@ -9,7 +9,7 @@ class Mapper @Inject constructor() {
         return response.map {
             Show(
                 it.id,
-                it.image.medium,
+                it.image?.medium ?: it.image?.original ?: "",
                 it.name,
                 it.summary,
                 it.genres,

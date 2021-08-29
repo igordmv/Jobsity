@@ -5,6 +5,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_4dp"
         android:layout_marginEnd="@dimen/item_show_margin_end">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -14,7 +15,7 @@
             android:adjustViewBounds="true"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:src="@drawable/dinasty_placeholder"/>
+            android:src="@drawable/show_placeholder"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_show_content"
