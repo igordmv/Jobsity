@@ -63,14 +63,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupObservables() {
-        viewModel.getLoadingLiveData().observe(viewLifecycleOwner, Observer { loading ->
-            if (loading) {
-                binding.loading.visibility = View.VISIBLE
-            } else {
-                binding.loading.visibility = View.GONE
-            }
-        })
-
         viewModel.getShowsLiveData().observe(viewLifecycleOwner, Observer { shows ->
             if (shows.isNotEmpty()) {
                 this.shows = shows
@@ -80,9 +72,7 @@ class HomeFragment : Fragment() {
         })
     }
 
-
     companion object {
-        private const val SHOW_LIST = "SHOW_LIST"
         const val SELECTED_SHOW = "SELECTED_SHOW"
     }
 

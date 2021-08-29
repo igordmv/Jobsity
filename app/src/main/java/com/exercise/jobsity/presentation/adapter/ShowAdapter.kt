@@ -40,14 +40,10 @@ class ShowAdapter(
 
 class ShowViewHolder internal constructor(
     private val binding: ItemShowBinding,
-    private val onShowClicked: (Show) -> Unit
-) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(show: Show) {
-        Glide.with(binding.ivBanner)
-            .load(show.image)
-            .into(binding.ivBanner)
-
-        binding.tvShowName.text = show.name
-        binding.root.setOnClickListener { onShowClicked.invoke(show) }
+    override val onShowClicked: (Show) -> Unit
+) : BaseShowViewHolder(binding = binding) {
+    override fun bind(show: Show) {
+        binding.show = show
+        binding.viewHolder = this
     }
 }

@@ -3,10 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewHolder"
+            type="com.exercise.jobsity.presentation.adapter.EpisodeViewHolder" />
+        <variable
+            name="episode"
+            type="com.exercise.jobsity.domain.model.Episode" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dimen_4dp"
+        android:onClick="@{() -> viewHolder.onEpisodeClicked.invoke(episode)}"
         android:background="?android:attr/selectableItemBackground">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -15,6 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_8dp"
             android:fontFamily="@font/gilroy_extrabold"
+            android:text="@{episode.number.toString()}"
             tools:text="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -27,6 +38,7 @@
             android:layout_marginStart="@dimen/dimen_32dp"
             android:fontFamily="@font/gilroy_light"
             android:textColor="@color/black"
+            android:text="@{episode.name}"
             tools:text="Fine Temporum"
             app:layout_constraintStart_toEndOf="@id/tv_episode_number"
             app:layout_constraintTop_toTopOf="parent"/>

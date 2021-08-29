@@ -28,7 +28,7 @@ import java.util.*
 class SearchFragment : Fragment(), SearchView.OnQueryTextListener, TextWatcher {
 
     private lateinit var binding: FragmentSearchBinding
-    private lateinit var adapter: SearchedShowAdapter
+    private lateinit var adapter : SearchedShowAdapter
     private val viewModel: SearchViewModel by viewModels()
     private lateinit var searchView: SearchView
     private lateinit var searchViewText: EditText

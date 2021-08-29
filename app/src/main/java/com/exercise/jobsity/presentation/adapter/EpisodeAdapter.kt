@@ -1,6 +1,5 @@
 package com.exercise.jobsity.presentation.adapter
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -40,11 +39,10 @@ class EpisodeAdapter(
 
 class EpisodeViewHolder internal constructor(
     private val binding: ItemEpisodeBinding,
-    private val onEpisodeClicked: (Episode) -> Unit
+    val onEpisodeClicked: (Episode) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(episode: Episode) {
-        binding.tvEpisodeName.text = episode.name
-        binding.tvEpisodeNumber.text = "${episode.number}"
-        binding.root.setOnClickListener { onEpisodeClicked.invoke(episode) }
+        binding.episode = episode
+        binding.viewHolder = this
     }
 }

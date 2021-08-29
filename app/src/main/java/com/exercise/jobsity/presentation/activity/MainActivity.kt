@@ -3,10 +3,14 @@ package com.exercise.jobsity.presentation.activity
 import android.app.SearchManager
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.databinding.BindingAdapter
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.bumptech.glide.Glide
 import com.exercise.jobsity.R
 import com.exercise.jobsity.databinding.ActivityMainBinding
 import com.exercise.jobsity.presentation.fragment.search.SearchFragment
@@ -42,6 +46,25 @@ class MainActivity : AppCompatActivity() {
             if (fragment is SearchFragment) {
                 fragment.setSpelledQuery(message)
             }
+        }
+    }
+
+    companion object {
+        @BindingAdapter("android:glideImage")
+        @JvmStatic
+        fun setImage(image: AppCompatImageView, url: String?) {
+            url?.let {
+                Glide.with(image.context)
+                    .load(url)
+                    .placeholder(R.drawable.show_placeholder)
+                    .into(image)
+            }
+        }
+
+        @BindingAdapter("android:visibility")
+        @JvmStatic
+        fun setVisibility(view: View, value: Boolean) {
+            view.visibility = if (value) View.VISIBLE else View.GONE
         }
     }
 }

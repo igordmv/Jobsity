@@ -7,20 +7,24 @@
         <variable
             name="viewHolder"
             type="com.exercise.jobsity.presentation.adapter.SearchedShowViewHolder" />
+        <variable
+            name="show"
+            type="com.exercise.jobsity.domain.model.Show" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dimen_4dp"
-        android:layout_marginEnd="@dimen/item_show_margin_end">
+        android:layout_marginEnd="@dimen/item_show_margin_end"
+        android:onClick="@{() -> viewHolder.onShowClicked.invoke(show)}">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_banner"
             android:layout_width="wrap_content"
             android:layout_height="150dp"
             android:adjustViewBounds="true"
-            android:glideImage="@{viewHolder.show.image}"
+            android:glideImage="@{show.image}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:src="@drawable/show_placeholder"/>
@@ -45,7 +49,7 @@
                 android:fontFamily="@font/gilroy_extrabold"
                 android:textColor="@color/white"
                 android:textSize="@dimen/medium_text"
-                android:text="@{viewHolder.show.name}"
+                android:text="@{show.name}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/tv_show_description"

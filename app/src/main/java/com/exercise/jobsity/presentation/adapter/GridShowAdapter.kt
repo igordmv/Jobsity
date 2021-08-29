@@ -4,8 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import com.bumptech.glide.Glide
-import com.exercise.jobsity.R
 import com.exercise.jobsity.databinding.ItemShowBinding
 import com.exercise.jobsity.domain.model.Show
 
@@ -22,15 +20,8 @@ class GridShowAdapter(
             parent,
             false
         )
-        val show = shows[position]
-        Glide.with(binding.ivBanner)
-            .load(show.image)
-            .placeholder(R.drawable.show_placeholder)
-            .into(binding.ivBanner)
-        binding.tvShowName.text = show.name
-        binding.root.setOnClickListener { onShowClicked.invoke(show) }
+        ShowViewHolder(binding, onShowClicked).bind(shows[position])
         return binding.root
-
     }
 
     fun loadMore(items: List<Show>) {

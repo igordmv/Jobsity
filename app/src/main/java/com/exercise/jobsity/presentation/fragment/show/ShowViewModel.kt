@@ -165,23 +165,4 @@ class ShowViewModel @Inject constructor(
         }
         return formattedGenres
     }
-
-    companion object {
-        @BindingAdapter("android:glideImage")
-        @JvmStatic
-        fun setImage(image: AppCompatImageView, url: String?) {
-            url?.let {
-                Glide.with(image.context)
-                    .load(url)
-                    .placeholder(R.drawable.show_placeholder)
-                    .into(image)
-            }
-        }
-
-        @BindingAdapter("android:visibility")
-        @JvmStatic
-        fun setVisibility(view: View, value: Boolean) {
-            view.visibility = if (value) View.VISIBLE else View.GONE
-        }
-    }
 }

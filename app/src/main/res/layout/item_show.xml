@@ -2,17 +2,29 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewHolder"
+            type="com.exercise.jobsity.presentation.adapter.BaseShowViewHolder" />
+        <variable
+            name="show"
+            type="com.exercise.jobsity.domain.model.Show" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dimen_4dp"
-        android:layout_marginEnd="@dimen/item_show_margin_end">
+        android:layout_marginEnd="@dimen/item_show_margin_end"
+        android:onClick="@{() -> viewHolder.onShowClicked.invoke(show)}">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_banner"
             android:layout_width="wrap_content"
             android:layout_height="150dp"
             android:adjustViewBounds="true"
+            android:glideImage="@{show.image}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:src="@drawable/show_placeholder"/>
@@ -34,6 +46,7 @@
                 android:layout_marginStart="@dimen/dimen_4dp"
                 android:layout_marginTop="@dimen/dimen_8dp"
                 android:textColor="@color/white"
+                android:text="@{show.name}"
                 android:textSize="@dimen/show_name_text_size"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

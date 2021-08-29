@@ -37,13 +37,13 @@ class SearchedShowAdapter(
 
 class SearchedShowViewHolder internal constructor(
     private val binding: ItemSearchedShowBinding,
-    private val onShowClicked: (Show) -> Unit
+    val onShowClicked: (Show) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
     var show: Show? = null
     fun bind(show: Show) {
         this.show = show
+        binding.show = show
         binding.viewHolder = this
-        binding.root.setOnClickListener { onShowClicked.invoke(show) }
     }
 
     fun getDescription(): Spanned? {
