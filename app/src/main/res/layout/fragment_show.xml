@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.exercise.jobsity.presentation.fragment.show.ShowViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -26,6 +34,7 @@
                 android:layout_height="350dp"
                 android:layout_marginStart="@dimen/dimen_8dp"
                 android:layout_marginTop="@dimen/dimen_16dp"
+                android:glideImage="@{viewModel.show.image}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/iv_back"
@@ -36,6 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gilroy_extrabold"
+                android:text="@{viewModel.show.name}"
                 android:textSize="@dimen/show_name_title_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -50,20 +60,23 @@
                 android:layout_marginTop="@dimen/dimen_8dp"
                 android:layout_marginEnd="@dimen/dimen_32dp"
                 android:fontFamily="@font/gilroy_light"
-                android:textSize="@dimen/show_description_text_size"
                 android:gravity="center"
-                tools:text="Filmed at the historic Warner Theater in Washington, DC, the program will honor recipients of the 29th annual Hispanic Heritage Awards. Honorees include celebrities, physicians, scientists, educators, innovators, public officials and community and business leaders selected by the Hispanic Heritage Foundation. The awards, established by the White House in 1987 to commemorate the creation of Hispanic Heritage Month in the U.S., are considered among the highest honors for Latinos by Latinos and recognize notable Latinos who have had a positive impact on America and the world in various fields. The evening includes live performances and appearances by some of the country's most celebrated Hispanic artists. This year's Hispanic Heritage Awards will be hosted by cast members from Orange is the New Black."
+                android:text="@{viewModel.getDescription()}"
+                android:textSize="@dimen/show_description_text_size"
+                android:visibility="@{viewModel.descriptionVisibility, default= gone}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_show_name" />
+                app:layout_constraintTop_toBottomOf="@id/tv_show_name"
+                tools:text="Filmed at the historic  the U.S, are considered among the highest honors for Latinos by Latinos and recognize notable Latinos who have had a positive impact on America and the world in various fields."
+                tools:visibility="visible" />
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_show_info"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginHorizontal="@dimen/dimen_8dp"
-                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_marginTop="@dimen/dimen_12dp"
                 android:background="@color/ice"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -73,166 +86,245 @@
                     android:id="@+id/tv_show_info_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="30sp"
-                    android:text="@string/show_info"
                     android:fontFamily="@font/gilroy_extrabold"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    android:text="@string/show_info"
+                    android:textSize="30sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_network_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_extrabold"
                     android:text="@string/network"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/gilroy_extrabold"
-                    android:visibility="gone"
-                    tools:visibility="visible"
+                    android:visibility="@{viewModel.networkVisibility, default = gone}"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_show_info_title"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    tools:visibility="visible" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_schedule_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_extrabold"
                     android:text="@string/schedule"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/gilroy_extrabold"
-                    android:visibility="gone"
-                    tools:visibility="visible"
+                    android:visibility="@{viewModel.scheduleVisibility, default = gone}"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_network_header"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    tools:visibility="visible" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_status_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_extrabold"
                     android:text="@string/status"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/gilroy_extrabold"
-                    android:visibility="gone"
-                    tools:visibility="visible"
+                    android:visibility="@{viewModel.statusVisibility, default = gone}"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_schedule_header"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    tools:visibility="visible" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_show_type_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_extrabold"
                     android:text="@string/show_type"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/gilroy_extrabold"
-                    android:visibility="gone"
-                    tools:visibility="visible"
+                    android:visibility="@{viewModel.typeVisibility, default = gone}"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_status_header"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    tools:visibility="visible" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_genres_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_extrabold"
                     android:text="@string/genres"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/gilroy_extrabold"
-                    android:visibility="gone"
-                    tools:visibility="visible"
+                    android:visibility="@{viewModel.genresVisibility, default = gone}"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_show_type_header"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    tools:visibility="visible" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_official_site_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dimen_16dp"
+                    android:fontFamily="@font/gilroy_extrabold"
                     android:text="@string/official_site"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/gilroy_extrabold"
-                    android:visibility="gone"
-                    tools:visibility="visible"
+                    android:visibility="@{viewModel.siteVisibility, default = gone}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_genres_header"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    tools:visibility="visible" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_network_content"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_8dp"
-                    android:textColor="@color/black"
                     android:fontFamily="@font/gilroy_light"
-                    android:visibility="gone"
-                    tools:visibility="visible"
-                    tools:text="CBS (US)"
+                    android:text="@{viewModel.getNetworkText()}"
+                    android:textColor="@color/black"
+                    android:visibility="@{viewModel.networkVisibility, default = gone}"
+                    app:layout_constraintStart_toEndOf="@id/tv_network_header"
                     app:layout_constraintTop_toBottomOf="@id/tv_show_info_title"
-                    app:layout_constraintStart_toEndOf="@id/tv_network_header"/>
+                    tools:text="CBS (US)"
+                    tools:visibility="visible" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_schedule_content"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_8dp"
-                    android:textColor="@color/black"
                     android:fontFamily="@font/gilroy_light"
-                    android:visibility="gone"
-                    tools:visibility="visible"
-                    tools:text="Thursdays at 22:00 (60 min)"
+                    android:text="@{viewModel.getScheduleText()}"
+                    android:textColor="@color/black"
+                    android:visibility="@{viewModel.scheduleVisibility, default = gone}"
+                    app:layout_constraintStart_toEndOf="@id/tv_schedule_header"
                     app:layout_constraintTop_toBottomOf="@id/tv_network_header"
-                    app:layout_constraintStart_toEndOf="@id/tv_schedule_header"/>
+                    tools:text="Thursdays at 22:00 (60 min)"
+                    tools:visibility="visible" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_status_content"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_8dp"
-                    android:textColor="@color/black"
                     android:fontFamily="@font/gilroy_light"
-                    android:visibility="gone"
-                    tools:visibility="visible"
-                    tools:text="Ended"
+                    android:text="@{viewModel.show.status}"
+                    android:textColor="@color/black"
+                    android:visibility="@{viewModel.statusVisibility, default = gone}"
+                    app:layout_constraintStart_toEndOf="@id/tv_status_header"
                     app:layout_constraintTop_toBottomOf="@id/tv_schedule_header"
-                    app:layout_constraintStart_toEndOf="@id/tv_status_header"/>
+                    tools:text="Ended"
+                    tools:visibility="visible" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_show_type_content"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_8dp"
-                    android:textColor="@color/black"
                     android:fontFamily="@font/gilroy_light"
-                    android:visibility="gone"
-                    tools:visibility="visible"
-                    tools:text="Scripted"
+                    android:text="@{viewModel.show.type}"
+                    android:textColor="@color/black"
+                    android:visibility="@{viewModel.typeVisibility, default = gone}"
+                    app:layout_constraintStart_toEndOf="@id/tv_show_type_header"
                     app:layout_constraintTop_toBottomOf="@id/tv_status_header"
-                    app:layout_constraintStart_toEndOf="@id/tv_show_type_header"/>
+                    tools:text="Scripted"
+                    tools:visibility="visible" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_genres_content"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_8dp"
-                    android:textColor="@color/black"
                     android:fontFamily="@font/gilroy_light"
-                    android:visibility="gone"
-                    tools:visibility="visible"
-                    tools:text="Drama | Science-Fiction | Thriller"
+                    android:text="@{viewModel.getGenresText()}"
+                    android:textColor="@color/black"
+                    android:visibility="@{viewModel.genresVisibility, default = gone}"
+                    app:layout_constraintStart_toEndOf="@id/tv_genres_header"
                     app:layout_constraintTop_toBottomOf="@id/tv_show_type_header"
-                    app:layout_constraintStart_toEndOf="@id/tv_genres_header"/>
+                    tools:text="Drama | Science-Fiction | Thriller"
+                    tools:visibility="visible" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_official_site_content"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_8dp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/gilroy_light"
+                    android:layout_marginBottom="@dimen/dimen_16dp"
                     android:autoLink="web"
+                    android:fontFamily="@font/gilroy_light"
                     android:inputType="textWebEditText"
-                    android:visibility="gone"
-                    tools:visibility="visible"
-                    tools:text="www.cbs.com"
+                    android:text="@{viewModel.show.officialSite}"
+                    android:textColor="@color/black"
+                    android:visibility="@{viewModel.siteVisibility, default = gone}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/tv_official_site_header"
                     app:layout_constraintTop_toBottomOf="@id/tv_genres_header"
-                    app:layout_constraintStart_toEndOf="@id/tv_official_site_header"/>
+                    tools:text="https://www.cbs.com/shows/person_of_interest"
+                    tools:visibility="visible" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/dimen_8dp"
+                android:layout_marginTop="@dimen/dimen_12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cl_show_info">
+
+                <Spinner
+                    android:id="@+id/spinner_seasons"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_32dp"
+                    android:background="@android:drawable/btn_dropdown"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_episode_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_16dp"
+                    android:fontFamily="@font/gilroy_extrabold"
+                    android:text="@{viewModel.episodeQuantityObservable}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/medium_text"
+                    app:layout_constraintBottom_toBottomOf="@id/spinner_seasons"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/spinner_seasons"
+                    app:layout_constraintTop_toTopOf="@id/spinner_seasons"
+                    tools:text="9 episodes" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_season_episodes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimen_8dp"
+                    android:layout_marginTop="@dimen/dimen_16dp"
+                    android:layout_marginBottom="@dimen/dimen_16dp"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="@id/spinner_seasons"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_seasons"
+                    tools:listitem="@layout/item_episode" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/loading"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:visibility="@{viewModel.loadingLiveData}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/tv_show_lottie_anim"
+                app:lottie_repeatMode="reverse" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </layout>

@@ -3,6 +3,7 @@
     <style name="Theme.Jobsity" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
 
     <style name="Theme.Jobsity.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">

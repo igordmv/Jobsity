@@ -1,9 +1,15 @@
 package com.exercise.jobsity.di
 
 import com.exercise.jobsity.data.api.ResponseHandler
+import com.exercise.jobsity.data.api.episode.EpisodeApi
+import com.exercise.jobsity.data.api.season.SeasonApi
 import com.exercise.jobsity.data.api.show.ShowApi
-import com.exercise.jobsity.data.repository.show.ShowMapper
+import com.exercise.jobsity.data.repository.Mapper
+import com.exercise.jobsity.data.repository.episode.EpisodeRepositoryImpl
+import com.exercise.jobsity.data.repository.season.SeasonRepositoryImpl
 import com.exercise.jobsity.data.repository.show.ShowRepositoryImpl
+import com.exercise.jobsity.domain.repository.episode.EpisodeRepository
+import com.exercise.jobsity.domain.repository.season.SeasonRepository
 import com.exercise.jobsity.domain.repository.show.ShowRepository
 import dagger.Module
 import dagger.Provides
@@ -21,7 +27,31 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideShowRepository(showApi: ShowApi, showMapper: ShowMapper, responseHandler: ResponseHandler): ShowRepository {
-        return ShowRepositoryImpl(showApi, showMapper, responseHandler)
+    fun provideShowRepository(
+        showApi: ShowApi,
+        mapper: Mapper,
+        responseHandler: ResponseHandler
+    ): ShowRepository {
+        return ShowRepositoryImpl(showApi, mapper, responseHandler)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSeasonRepository(
+        seasonApi: SeasonApi,
+        mapper: Mapper,
+        responseHandler: ResponseHandler
+    ): SeasonRepository {
+        return SeasonRepositoryImpl(seasonApi, mapper, responseHandler)
+    }
+
+    @Provides
+    @Singleton
+    fun provideEpisodeRepository(
+        episodeApi: EpisodeApi,
+        mapper: Mapper,
+        responseHandler: ResponseHandler
+    ): EpisodeRepository {
+        return EpisodeRepositoryImpl(episodeApi, mapper, responseHandler)
     }
 }

@@ -7,10 +7,14 @@
     <dimen name="show_description_text_size">15sp</dimen>
     <dimen name="show_episode_text_size">6sp</dimen>
     <dimen name="show_see_all_text_size">16sp</dimen>
+    <dimen name="small_text">6sp</dimen>
+    <dimen name="medium_text">15sp</dimen>
+    <dimen name="big_text">30sp</dimen>
 
     <!--dp's-->
     <dimen name="dimen_4dp">4dp</dimen>
     <dimen name="dimen_8dp">8dp</dimen>
+    <dimen name="dimen_12dp">12dp</dimen>
     <dimen name="dimen_16dp">16dp</dimen>
     <dimen name="dimen_32dp">32dp</dimen>
 </resources>
