@@ -2,7 +2,7 @@ package com.exercise.jobsity.data.repository.episode
 
 import com.exercise.jobsity.data.api.Resource
 import com.exercise.jobsity.data.api.ResponseHandler
-import com.exercise.jobsity.data.api.episode.EpisodeApi
+import com.exercise.jobsity.data.api.sections.episode.EpisodeApi
 import com.exercise.jobsity.data.api.response.EpisodeResponse
 import com.exercise.jobsity.data.repository.Mapper
 import com.exercise.jobsity.domain.model.Episode

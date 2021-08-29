@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bumptech.glide.Glide
+import com.exercise.jobsity.R
 import com.exercise.jobsity.data.api.Status
 import com.exercise.jobsity.domain.model.Episode
 import com.exercise.jobsity.domain.model.Schedule
@@ -40,7 +41,7 @@ class ShowViewModel @Inject constructor(
 
     fun setSelectedShow(selectedShow: Show) {
         show = selectedShow
-        fetchSeasons(selectedShow.id)
+        fetchSeasons(selectedShow.id ?: 0)
     }
 
     fun getDescription(): Spanned? {
@@ -172,6 +173,7 @@ class ShowViewModel @Inject constructor(
             url?.let {
                 Glide.with(image.context)
                     .load(url)
+                    .placeholder(R.drawable.show_placeholder)
                     .into(image)
             }
         }

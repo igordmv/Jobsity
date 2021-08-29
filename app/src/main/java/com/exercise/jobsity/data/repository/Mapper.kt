@@ -23,6 +23,24 @@ class Mapper @Inject constructor() {
         }
     }
 
+    fun mapSearch(response: List<SearchResponse>): List<Show> {
+        return response.map {
+            Show(
+                it.show?.id,
+                it.show?.image?.medium ?: it.show?.image?.original ?: "",
+                it.show?.name,
+                it.show?.summary,
+                it.show?.genres,
+                it.show?.schedule?.let { mapSchedule(it) },
+                it.show?.network?.let { mapNetwork(it) },
+                it.show?.status,
+                it.show?.type,
+                it.show?.officialSite,
+                it.show?.averageRuntime
+            )
+        }
+    }
+
     fun mapSeason(response: List<SeasonResponse>): List<Season> {
         return response.map {
             Season(

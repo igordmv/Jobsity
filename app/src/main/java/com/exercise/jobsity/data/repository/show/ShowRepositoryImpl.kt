@@ -3,7 +3,7 @@ package com.exercise.jobsity.data.repository.show
 import com.exercise.jobsity.data.api.Resource
 import com.exercise.jobsity.data.api.ResponseHandler
 import com.exercise.jobsity.data.api.response.ShowResponse
-import com.exercise.jobsity.data.api.show.ShowApi
+import com.exercise.jobsity.data.api.sections.show.ShowApi
 import com.exercise.jobsity.data.repository.Mapper
 import com.exercise.jobsity.domain.model.Show
 import com.exercise.jobsity.domain.repository.show.ShowRepository

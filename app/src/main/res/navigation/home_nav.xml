@@ -2,10 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/home_nav"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/navigation_home">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/navigation_home"
         android:name="com.exercise.jobsity.presentation.fragment.home.HomeFragment"
         android:label="HomeFragment">
         <action
@@ -44,6 +44,21 @@
 
         <action
             android:id="@+id/action_moreShowsFragment_to_showFragment"
+            app:destination="@id/showFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.exercise.jobsity.presentation.fragment.profile.ProfileFragment"
+        android:label="ProfileFragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.exercise.jobsity.presentation.fragment.search.SearchFragment"
+        android:label="SearchFragment">
+        <action
+            android:id="@+id/action_navigation_search_to_showFragment"
             app:destination="@id/showFragment" />
     </fragment>
 

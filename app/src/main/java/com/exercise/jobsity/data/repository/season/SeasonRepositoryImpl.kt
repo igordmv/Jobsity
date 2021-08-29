@@ -3,7 +3,7 @@ package com.exercise.jobsity.data.repository.season
 import com.exercise.jobsity.data.api.Resource
 import com.exercise.jobsity.data.api.ResponseHandler
 import com.exercise.jobsity.data.api.response.SeasonResponse
-import com.exercise.jobsity.data.api.season.SeasonApi
+import com.exercise.jobsity.data.api.sections.season.SeasonApi
 import com.exercise.jobsity.data.repository.Mapper
 import com.exercise.jobsity.domain.model.Season
 import com.exercise.jobsity.domain.repository.season.SeasonRepository

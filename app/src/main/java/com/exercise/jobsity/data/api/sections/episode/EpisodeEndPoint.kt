@@ -1,4 +1,4 @@
-package com.exercise.jobsity.data.api.episode
+package com.exercise.jobsity.data.api.sections.episode
 
 import com.exercise.jobsity.data.api.response.EpisodeResponse
 import retrofit2.http.GET

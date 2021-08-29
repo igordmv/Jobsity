@@ -13,4 +13,5 @@
     <string name="official_site">Official Site:</string>
     <string name="season">Season:</string>
     <string name="episode">Episode:</string>
+    <string name="search_show_name">Search show name</string>
 </resources>

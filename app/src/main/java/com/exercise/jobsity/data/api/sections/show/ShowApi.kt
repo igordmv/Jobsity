@@ -1,4 +1,4 @@
-package com.exercise.jobsity.data.api.show
+package com.exercise.jobsity.data.api.sections.show
 
 import com.exercise.jobsity.data.api.response.ShowResponse
 import javax.inject.Inject

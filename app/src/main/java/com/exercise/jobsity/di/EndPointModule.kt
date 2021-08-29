@@ -1,8 +1,9 @@
 package com.exercise.jobsity.di
 
-import com.exercise.jobsity.data.api.episode.EpisodeEndPoint
-import com.exercise.jobsity.data.api.season.SeasonEndPoint
-import com.exercise.jobsity.data.api.show.ShowEndPoint
+import com.exercise.jobsity.data.api.sections.episode.EpisodeEndPoint
+import com.exercise.jobsity.data.api.sections.search.SearchEndPoint
+import com.exercise.jobsity.data.api.sections.season.SeasonEndPoint
+import com.exercise.jobsity.data.api.sections.show.ShowEndPoint
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,5 +31,11 @@ class EndPointModule {
     @Singleton
     fun provideEpisodeEndPoint(retrofit: Retrofit): EpisodeEndPoint {
         return retrofit.create(EpisodeEndPoint::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSearchEndPoint(retrofit: Retrofit): SearchEndPoint {
+        return retrofit.create(SearchEndPoint::class.java)
     }
 }
