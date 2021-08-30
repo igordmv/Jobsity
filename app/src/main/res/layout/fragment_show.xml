@@ -49,6 +49,15 @@
                 app:layout_constraintTop_toBottomOf="@id/iv_banner"
                 tools:text="Dynasty" />
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_favorite_image"
+                android:layout_width="@dimen/dimen_32dp"
+                android:layout_height="@dimen/dimen_32dp"
+                android:src="@drawable/favorite_unpressed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_banner"
+                app:layout_constraintStart_toEndOf="@id/tv_show_name"/>
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_show_description"
                 android:layout_width="0dp"

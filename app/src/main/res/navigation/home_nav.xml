@@ -48,12 +48,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_profile"
-        android:name="com.exercise.jobsity.presentation.fragment.profile.ProfileFragment"
-        android:label="ProfileFragment">
-    </fragment>
-
-    <fragment
         android:id="@+id/navigation_search"
         android:name="com.exercise.jobsity.presentation.fragment.search.SearchFragment"
         android:label="SearchFragment">

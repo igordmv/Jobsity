@@ -20,6 +20,7 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var binding: FragmentHomeBinding
     private lateinit var showsAdapter: ShowAdapter
+    private lateinit var favoriteListAdapter: ShowAdapter
     private lateinit var shows: List<Show>
 
     override fun onCreateView(
@@ -42,6 +43,7 @@ class HomeFragment : Fragment() {
         } else {
             viewModel.fetchShows()
         }
+        viewModel.fetchFavoriteList()
         return binding.root
     }
 
@@ -54,6 +56,9 @@ class HomeFragment : Fragment() {
     private fun setupShowAdapter() {
         showsAdapter = ShowAdapter(emptyList(), this::clickedShow)
         binding.rvShows.adapter = showsAdapter
+
+        favoriteListAdapter = ShowAdapter(emptyList(), this::clickedShow)
+        binding.rvFavoriteShows.adapter = favoriteListAdapter
     }
 
     private fun clickedShow(show: Show) {
@@ -68,6 +73,13 @@ class HomeFragment : Fragment() {
                 this.shows = shows
                 binding.btShowSeeAll.visibility = View.VISIBLE
                 showsAdapter.replaceItems(shows)
+            }
+        })
+        viewModel.getFavoriteListLiveData().observe(viewLifecycleOwner, Observer {  shows ->
+            if (shows.isNotEmpty()) {
+                binding.tvFavorites.visibility = View.VISIBLE
+                binding.rvFavoriteShows.visibility = View.VISIBLE
+                favoriteListAdapter.replaceItems(shows)
             }
         })
     }

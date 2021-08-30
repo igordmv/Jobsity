@@ -16,6 +16,7 @@ import com.exercise.jobsity.domain.model.Episode
 import com.exercise.jobsity.domain.model.Season
 import com.exercise.jobsity.domain.model.Show
 import com.exercise.jobsity.presentation.adapter.EpisodeAdapter
+import com.exercise.jobsity.presentation.extensions.runOnUI
 import com.exercise.jobsity.presentation.fragment.episode.EpisodeFragment.Companion.SELECTED_EPISODE
 import com.exercise.jobsity.presentation.fragment.home.HomeFragment.Companion.SELECTED_SHOW
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,8 +29,9 @@ class ShowFragment : Fragment() {
     private lateinit var binding: FragmentShowBinding
     private lateinit var seasons: List<Season>
     private lateinit var episodes: List<Episode>
-    private lateinit var episodesAdapter : EpisodeAdapter
+    private lateinit var episodesAdapter: EpisodeAdapter
     private val viewModel: ShowViewModel by viewModels()
+    private var isFavorite: Boolean? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,7 +59,7 @@ class ShowFragment : Fragment() {
         binding.rvSeasonEpisodes.adapter = episodesAdapter
     }
 
-    private fun clickedEpisode(episode : Episode) {
+    private fun clickedEpisode(episode: Episode) {
         val bundle = Bundle()
         bundle.putParcelable(SELECTED_EPISODE, episode)
         findNavController().navigate(R.id.action_showFragment_to_episodeFragment, bundle)
@@ -102,11 +104,32 @@ class ShowFragment : Fragment() {
                 episodesAdapter.replaceItems(episodes)
             }
         })
+
+        viewModel.getIsFavoriteObservable().observe(viewLifecycleOwner, Observer { isFavorite ->
+            this.isFavorite = isFavorite
+            runOnUI {
+                if (isFavorite) {
+                    binding.ivFavoriteImage.setBackgroundResource(R.drawable.favorite_pressed)
+                } else {
+                    binding.ivFavoriteImage.setBackgroundResource(R.drawable.favorite_unpressed)
+                }
+            }
+        })
     }
 
     private fun setupListeners() {
         binding.ivBack.setOnClickListener {
             findNavController().popBackStack()
+        }
+
+        binding.ivFavoriteImage.setOnClickListener {
+            isFavorite?.let { isFavorite ->
+                if (isFavorite) {
+                    viewModel.removeFavorite(selectedShow)
+                } else {
+                    viewModel.setFavorite(selectedShow)
+                }
+            }
         }
     }
 }

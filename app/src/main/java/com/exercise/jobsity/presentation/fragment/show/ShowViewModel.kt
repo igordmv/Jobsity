@@ -3,20 +3,15 @@ package com.exercise.jobsity.presentation.fragment.show
 import android.text.Html
 import android.text.Spanned
 import android.view.View
-import androidx.appcompat.widget.AppCompatImageView
-import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bumptech.glide.Glide
-import com.exercise.jobsity.R
 import com.exercise.jobsity.data.api.Status
 import com.exercise.jobsity.domain.model.Episode
 import com.exercise.jobsity.domain.model.Schedule
 import com.exercise.jobsity.domain.model.Season
 import com.exercise.jobsity.domain.model.Show
-import com.exercise.jobsity.domain.usecase.GetSeasonEpisodesUseCase
-import com.exercise.jobsity.domain.usecase.GetSeasonsUseCase
+import com.exercise.jobsity.domain.usecase.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,22 +21,53 @@ import javax.inject.Inject
 @HiltViewModel
 class ShowViewModel @Inject constructor(
     private val getSeasonsUseCase: GetSeasonsUseCase,
-    private val getSeasonEpisodesUseCase: GetSeasonEpisodesUseCase
+    private val getSeasonEpisodesUseCase: GetSeasonEpisodesUseCase,
+    private val getIfShowIsFavoriteUseCase: GetIfShowIsFavoriteUseCase,
+    private val setFavoriteShowUseCase: SetFavoriteShowUseCase,
+    private val removeFavoriteShowUseCase: RemoveFavoriteShowUseCase
 ) : ViewModel() {
 
     private val loadingObservable = MutableLiveData<Boolean>().apply { value = true }
+    private val isFavoriteObservable = MutableLiveData<Boolean>().apply { value = false }
     private val seasonsObservable = MutableLiveData<List<Season>>().apply { value = emptyList() }
     private val episodesObservable = MutableLiveData<List<Episode>>().apply { value = emptyList() }
     var episodeQuantityObservable = MutableLiveData<String>().apply { value = "" }
     var show: Show? = null
 
     fun getLoadingLiveData(): LiveData<Boolean> = loadingObservable
+    fun getIsFavoriteObservable(): LiveData<Boolean> = isFavoriteObservable
     fun getSeasonLiveData(): LiveData<List<Season>> = seasonsObservable
     fun getEpisodeLiveData(): LiveData<List<Episode>> = episodesObservable
 
     fun setSelectedShow(selectedShow: Show) {
         show = selectedShow
+        getIfShowIsFavorite()
         fetchSeasons(selectedShow.id ?: 0)
+    }
+
+    fun removeFavorite(selectedShow: Show) = CoroutineScope(Dispatchers.IO).launch {
+        removeFavoriteShowUseCase.execute(selectedShow)
+        isFavoriteObservable.postValue(false)
+    }
+
+    fun setFavorite(selectedShow: Show) = CoroutineScope(Dispatchers.IO).launch {
+        setFavoriteShowUseCase.execute(selectedShow)
+        isFavoriteObservable.postValue(true)
+    }
+
+    private fun getIfShowIsFavorite() = CoroutineScope(Dispatchers.IO).launch {
+        show?.let {
+            val isFavoriteResponse = getIfShowIsFavoriteUseCase.execute(it)
+            when (isFavoriteResponse.status) {
+                Status.SUCCESS -> {
+                    isFavoriteObservable.postValue(isFavoriteResponse.data == true)
+                }
+                Status.ERROR -> {
+                }
+            }
+        } ?: run {
+            isFavoriteObservable.postValue(false)
+        }
     }
 
     fun getDescription(): Spanned? {
