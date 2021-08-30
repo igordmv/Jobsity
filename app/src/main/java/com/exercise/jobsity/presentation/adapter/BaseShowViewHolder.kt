@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.exercise.jobsity.domain.model.Show
 
 /**
- * BaseViewHolder class used for dataBinding at item_show.xml
+ * BaseViewHolder class used for dataBinding at [com.exercise.jobsity.R.layout.item_show]
  */
 open class BaseShowViewHolder internal constructor(
     binding: ViewDataBinding

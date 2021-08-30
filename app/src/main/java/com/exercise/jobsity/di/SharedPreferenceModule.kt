@@ -10,7 +10,9 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-
+/**
+ * Dependency injection for SharedPreferences.
+ */
 @InstallIn(SingletonComponent::class)
 @Module
 class SharedPreferenceModule {

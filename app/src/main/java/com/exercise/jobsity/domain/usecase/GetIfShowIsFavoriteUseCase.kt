@@ -5,6 +5,9 @@ import com.exercise.jobsity.domain.model.Show
 import com.exercise.jobsity.domain.repository.favorite.FavoriteRepository
 import javax.inject.Inject
 
+/**
+ * Use case for getting if show is favorite.
+ */
 class GetIfShowIsFavoriteUseCase @Inject constructor(private val favoriteRepository: FavoriteRepository) {
 
     suspend fun execute(show: Show): Resource<Boolean> = favoriteRepository.getIfShowIsFavorite(show)

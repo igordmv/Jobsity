@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.exercise.jobsity.databinding.ItemSearchedShowBinding
 import com.exercise.jobsity.domain.model.Show
 
+/**
+ * Search adapter to set searched query shows result
+ */
 class SearchedShowAdapter(
     private var shows: List<Show>,
     private val onShowClicked: (Show) -> Unit

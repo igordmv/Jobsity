@@ -26,7 +26,6 @@ import javax.inject.Singleton
 /**
  * Dependency injection for repository classes.
  */
-
 @InstallIn(SingletonComponent::class)
 @Module
 class RepositoryModule {

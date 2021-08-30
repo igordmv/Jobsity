@@ -7,6 +7,9 @@ import com.bumptech.glide.Glide
 import com.exercise.jobsity.databinding.ItemShowBinding
 import com.exercise.jobsity.domain.model.Show
 
+/**
+ * Show adapter for listing shows
+ */
 class ShowAdapter(
     private var shows: List<Show>,
     private val onShowClicked: (Show) -> Unit

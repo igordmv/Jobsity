@@ -7,6 +7,9 @@ import android.widget.BaseAdapter
 import com.exercise.jobsity.databinding.ItemShowBinding
 import com.exercise.jobsity.domain.model.Show
 
+/**
+ * Show grid adapter for loading multiple shows with pagination
+ */
 class GridShowAdapter(
     private var shows: MutableList<Show>,
     private val onShowClicked: (Show) -> Unit

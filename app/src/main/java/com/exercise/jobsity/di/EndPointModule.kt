@@ -11,6 +11,9 @@ import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
+/**
+ * Dependency injection for EndPoint classes.
+ */
 @InstallIn(SingletonComponent::class)
 @Module
 class EndPointModule {

@@ -8,6 +8,9 @@ import com.exercise.jobsity.R
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 
+/**
+ * Snack Alert used to show Errors
+ */
 class Alerts {
 
     companion object {

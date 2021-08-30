@@ -5,6 +5,9 @@ import com.exercise.jobsity.domain.model.Episode
 import com.exercise.jobsity.domain.repository.episode.EpisodeRepository
 import javax.inject.Inject
 
+/**
+ * Use case for getting episodes from a season.
+ */
 class GetSeasonEpisodesUseCase @Inject constructor(private val episodeRepository: EpisodeRepository) {
 
     suspend fun execute(seasonId: Int): Resource<List<Episode>> =

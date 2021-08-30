@@ -1,24 +1,21 @@
 package com.exercise.jobsity.di
 
-import android.app.Application
-import android.content.Context
-import android.content.SharedPreferences
-import com.exercise.jobsity.BaseApplication
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.CacheControl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+/**
+ * Dependency injection for Retrofit.
+ */
 @InstallIn(SingletonComponent::class)
 @Module
 class RetrofitModule() {
@@ -34,7 +31,7 @@ class RetrofitModule() {
             val response: okhttp3.Response
 
             val requestBuilder: Request.Builder = original.newBuilder()
-                    .method(original.method, original.body)
+                .method(original.method, original.body)
 
             val request = requestBuilder.build()
 

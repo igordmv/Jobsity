@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.exercise.jobsity.databinding.ItemEpisodeBinding
 import com.exercise.jobsity.domain.model.Episode
 
+/**
+ * Episode adapter for listing season episodes
+ */
 class EpisodeAdapter(
     private var episodes: List<Episode>,
     private val onEpisodeClicked: (Episode) -> Unit
