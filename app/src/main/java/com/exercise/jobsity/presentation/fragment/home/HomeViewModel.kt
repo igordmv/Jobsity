@@ -68,7 +68,7 @@ class HomeViewModel @Inject constructor(
             }
             RequestType.FAVORITE -> {
                 data?.let { shows ->
-                    favoriteListObservable.postValue(shows.take(MAX_SHOWS_AT_HOME))
+                    favoriteListObservable.postValue(shows)
                 }
             }
         }
