@@ -12,6 +12,7 @@ import com.exercise.jobsity.R
 import com.exercise.jobsity.databinding.FragmentHomeBinding
 import com.exercise.jobsity.domain.model.Show
 import com.exercise.jobsity.presentation.adapter.ShowAdapter
+import com.exercise.jobsity.presentation.widget.Alerts
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -68,6 +69,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupObservables() {
+        viewModel.getErrorObservable().observe(viewLifecycleOwner, Observer { message ->
+            if(message.isNotBlank()){
+                Alerts.snackInfo(binding.root, message)
+            }
+
+        })
         viewModel.getShowsLiveData().observe(viewLifecycleOwner, Observer { shows ->
             if (shows.isNotEmpty()) {
                 this.shows = shows

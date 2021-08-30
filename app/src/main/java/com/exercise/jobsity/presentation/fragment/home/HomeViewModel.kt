@@ -20,12 +20,14 @@ class HomeViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val loadingObservable = MutableLiveData<Boolean>().apply { value = true }
-    private val showsObservable = MutableLiveData<List<Show>>().apply { value = emptyList() }
-    private val favoriteListObservable = MutableLiveData<List<Show>>().apply { value = emptyList() }
+    private val showsObservable = MutableLiveData<List<Show>>()
+    private val favoriteListObservable = MutableLiveData<List<Show>>()
+    private val errorObservable = MutableLiveData<String>()
 
     fun getLoadingLiveData(): LiveData<Boolean> = loadingObservable
     fun getShowsLiveData(): LiveData<List<Show>> = showsObservable
     fun getFavoriteListLiveData(): LiveData<List<Show>> = favoriteListObservable
+    fun getErrorObservable() : LiveData<String> = errorObservable
 
     fun setShows(shows: List<Show>) {
         showsObservable.postValue(shows)
@@ -39,6 +41,7 @@ class HomeViewModel @Inject constructor(
                 handleSuccess(showRequest.data, RequestType.SHOW_LIST)
             }
             Status.ERROR -> {
+                errorObservable.postValue(showRequest.message)
             }
         }
         loadingObservable.postValue(false)
@@ -51,6 +54,7 @@ class HomeViewModel @Inject constructor(
                 handleSuccess(favoriteListRequest.data, RequestType.FAVORITE)
             }
             Status.ERROR -> {
+                errorObservable.postValue(favoriteListRequest.message)
             }
         }
     }

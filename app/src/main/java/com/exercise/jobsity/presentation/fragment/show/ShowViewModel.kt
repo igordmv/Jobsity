@@ -27,13 +27,15 @@ class ShowViewModel @Inject constructor(
     private val removeFavoriteShowUseCase: RemoveFavoriteShowUseCase
 ) : ViewModel() {
 
+    private val errorObservable = MutableLiveData<String>()
     private val loadingObservable = MutableLiveData<Boolean>().apply { value = true }
     private val isFavoriteObservable = MutableLiveData<Boolean>().apply { value = false }
-    private val seasonsObservable = MutableLiveData<List<Season>>().apply { value = emptyList() }
-    private val episodesObservable = MutableLiveData<List<Episode>>().apply { value = emptyList() }
+    private val seasonsObservable = MutableLiveData<List<Season>>()
+    private val episodesObservable = MutableLiveData<List<Episode>>()
     var episodeQuantityObservable = MutableLiveData<String>().apply { value = "" }
     var show: Show? = null
 
+    fun getErrorLiveData(): LiveData<String> = errorObservable
     fun getLoadingLiveData(): LiveData<Boolean> = loadingObservable
     fun getIsFavoriteObservable(): LiveData<Boolean> = isFavoriteObservable
     fun getSeasonLiveData(): LiveData<List<Season>> = seasonsObservable
@@ -63,6 +65,7 @@ class ShowViewModel @Inject constructor(
                     isFavoriteObservable.postValue(isFavoriteResponse.data == true)
                 }
                 Status.ERROR -> {
+                    errorObservable.postValue(isFavoriteResponse.message)
                 }
             }
         } ?: run {
@@ -142,6 +145,7 @@ class ShowViewModel @Inject constructor(
                 handleEpisodeRequestSuccess(episodesRequest.data)
             }
             Status.ERROR -> {
+                errorObservable.postValue(episodesRequest.message)
             }
         }
         loadingObservable.postValue(false)
@@ -154,6 +158,7 @@ class ShowViewModel @Inject constructor(
                 handleSeasonRequestSuccess(seasonRequest.data)
             }
             Status.ERROR -> {
+                errorObservable.postValue(seasonRequest.message)
             }
         }
     }

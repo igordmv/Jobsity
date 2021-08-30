@@ -19,6 +19,7 @@ import com.exercise.jobsity.presentation.adapter.EpisodeAdapter
 import com.exercise.jobsity.presentation.extensions.runOnUI
 import com.exercise.jobsity.presentation.fragment.episode.EpisodeFragment.Companion.SELECTED_EPISODE
 import com.exercise.jobsity.presentation.fragment.home.HomeFragment.Companion.SELECTED_SHOW
+import com.exercise.jobsity.presentation.widget.Alerts
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -66,6 +67,11 @@ class ShowFragment : Fragment() {
     }
 
     private fun setupObservers() {
+        viewModel.getErrorLiveData().observe(viewLifecycleOwner, Observer { message ->
+            if(message.isNotBlank()) {
+                Alerts.snackInfo(binding.root, message)
+            }
+        })
         viewModel.getSeasonLiveData().observe(viewLifecycleOwner, Observer { seasons ->
             if (seasons.isNotEmpty()) {
                 this.seasons = seasons
