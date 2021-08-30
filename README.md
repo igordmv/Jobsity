@@ -4,7 +4,7 @@ The application was developed using MVVM with Clean Architecture, separated into
 
 
   ## How to run:
-  There is a jobsity.apk at root folder, just download it and install and your device.
+  There is a jobsity.apk at root folder, just download it and install at your device.
 
 
 <img src="/CA-MVVM.png" alt="MVVM with Clean Architecture"/>
