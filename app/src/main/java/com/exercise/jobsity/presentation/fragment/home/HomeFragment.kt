@@ -84,8 +84,6 @@ class HomeFragment : Fragment() {
         })
         viewModel.getFavoriteListLiveData().observe(viewLifecycleOwner, Observer {  shows ->
             if (shows.isNotEmpty()) {
-                binding.tvFavorites.visibility = View.VISIBLE
-                binding.rvFavoriteShows.visibility = View.VISIBLE
                 favoriteListAdapter.replaceItems(shows)
             }
         })
