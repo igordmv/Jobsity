@@ -16,6 +16,19 @@ The application was developed using MVVM with Clean Architecture, separated into
   ## DI layer:
   responsible for the injection of the dependencies, using Hilt for this project.
 
+## Used Libraries:
+  - <a href="https://github.com/mockk/mockk" target="_blank">MockK</a>
+  - <a href="https://github.com/bumptech/glide" target="_blank">Glide</a>
+  - <a href="https://github.com/airbnb/lottie-android" target="_blank">Lottie Airbnb</a>
+  - <a href="https://developer.android.com/guide/navigation" target="_blank">Navigation</a>
+  - <a href="https://developer.android.com/training/dependency-injection/hilt-android" target="_blank">Hilt</a>
+  - <a href="https://github.com/square/okhttp" target="_blank">OkHttp</a>
+  - <a href="https://developer.android.com/kotlin/coroutines" target="_blank">Coroutines</a>
+  - <a href="https://github.com/square/retrofit" target="_blank">Retrofit</a>
+  - <a href="https://github.com/google/gson" target="_blank">Gson</a>
+  - <a href="https://developer.android.com/jetpack/androidx/releases/appcompat" target="_blank">App Compat</a>
+
+
 ## TODO list:
 
   - Insert Pin code authentication
