@@ -1,6 +1,5 @@
 package com.exercise.jobsity.presentation.fragment.moreshows
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,11 +20,13 @@ class MoreShowsViewModel @Inject constructor(
     var isAlreadyRequesting: Boolean = false
     private var firstPageFetched: Boolean = false
     private val loadingObservable = MutableLiveData<Boolean>().apply { value = true }
-    private val showsObservable = MutableLiveData<List<Show>>().apply { value = emptyList() }
+    private val errorObservable = MutableLiveData<String>()
+    private val showsObservable = MutableLiveData<List<Show>>()
     private var page = 0
 
     fun getLoadingLiveData(): LiveData<Boolean> = loadingObservable
     fun getShowsLiveData(): LiveData<List<Show>> = showsObservable
+    fun getErrorObservable() : LiveData<String> = errorObservable
 
     fun canPaginate(): Boolean {
         if (!firstPageFetched) {
@@ -42,6 +43,7 @@ class MoreShowsViewModel @Inject constructor(
                 handleSuccess(showRequest.data)
             }
             Status.ERROR -> {
+                errorObservable.postValue(showRequest.message)
             }
         }
         firstPageFetched = true
@@ -56,6 +58,7 @@ class MoreShowsViewModel @Inject constructor(
                 handleSuccess(showRequest.data)
             }
             Status.ERROR -> {
+                errorObservable.postValue(showRequest.message)
             }
         }
         isAlreadyRequesting = false

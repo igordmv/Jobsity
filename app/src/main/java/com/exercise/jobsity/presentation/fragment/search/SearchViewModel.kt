@@ -18,9 +18,11 @@ class SearchViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val loadingObservable = MutableLiveData<Boolean>().apply { value = false }
-    private val showsObservable = MutableLiveData<List<Show>>().apply { value = emptyList() }
+    private val showsObservable = MutableLiveData<List<Show>>()
+    private val errorObservable = MutableLiveData<String>()
 
     fun getLoadingLiveData(): LiveData<Boolean> = loadingObservable
+    fun getErrorLiveData(): LiveData<String> = errorObservable
     fun getShowsLiveData(): LiveData<List<Show>> = showsObservable
 
     fun search(query: String) = CoroutineScope(Dispatchers.IO).launch {
@@ -31,6 +33,7 @@ class SearchViewModel @Inject constructor(
                 handleSuccess(searchRequest.data)
             }
             Status.ERROR -> {
+                errorObservable.postValue(searchRequest.message)
             }
         }
         loadingObservable.postValue(false)

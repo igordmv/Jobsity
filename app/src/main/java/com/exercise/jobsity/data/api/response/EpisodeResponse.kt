@@ -15,5 +15,5 @@ data class EpisodeResponse(
     val runtime: Int?,
     val image: ImageResponse?,
     val summary: String?,
-    @SerializedName("_links") val links : LinksResponse
+    @SerializedName("_links") val links : LinksResponse?
 )

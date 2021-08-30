@@ -13,5 +13,5 @@ data class SeasonResponse(
     val network : NetworkResponse?,
     val image : ImageResponse?,
     val summary : String?,
-    @SerializedName("_links") val links : LinksResponse
+    @SerializedName("_links") val links : LinksResponse?
 )

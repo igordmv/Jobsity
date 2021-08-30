@@ -21,6 +21,7 @@ import com.exercise.jobsity.domain.model.Show
 import com.exercise.jobsity.presentation.adapter.SearchedShowAdapter
 import com.exercise.jobsity.presentation.extensions.runOnUI
 import com.exercise.jobsity.presentation.fragment.home.HomeFragment
+import com.exercise.jobsity.presentation.widget.Alerts
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -53,6 +54,11 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener, TextWatcher {
     }
 
     private fun setupObserver() {
+        viewModel.getErrorLiveData().observe(viewLifecycleOwner, Observer { message ->
+            if(message.isNotBlank()) {
+                Alerts.snackInfo(binding.root, message)
+            }
+        })
         viewModel.getShowsLiveData().observe(viewLifecycleOwner, Observer { shows ->
             adapter = SearchedShowAdapter(shows, this::clickedShow)
             binding.rvSearchedShows.adapter = adapter
