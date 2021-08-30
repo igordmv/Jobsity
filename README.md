@@ -2,19 +2,24 @@
 
 The application was developed using MVVM with Clean Architecture, separated into four layers: **Data, Domain, Presentation and DI (dependency injection)**
 
+
+  ## How to run:
+  There is a jobsity.apk at root folder, just download it and install and your device.
+
+
 <img src="/CA-MVVM.png" alt="MVVM with Clean Architecture"/>
 
   ## Layer Date:
-  responsible for deciding which source the data should be retrieved from (the application uses the network and the SharedPreferences for the favorite list).
+  Responsible for deciding which source the data should be retrieved from (the application uses the network and the SharedPreferences for the favorite list).
 
   ## Domain layer:
-  contains the use cases of the application and is responsible for any future business rules to be implemented, contains the interfaces which the Data layer implements
+  Contains the use cases of the application and is responsible for any future business rules to be implemented, contains the interfaces which the Data layer implements
 
   ## Presentation layer:
-  responsible for how the data is presented on the mobile screen
+  Responsible for how the data is presented on the mobile screen
 
   ## DI layer:
-  responsible for the injection of the dependencies, using Hilt for this project.
+  Responsible for the injection of the dependencies, using Hilt for this project.
 
 ## Used Libraries:
   - <a href="https://github.com/mockk/mockk" target="_blank">MockK</a>
